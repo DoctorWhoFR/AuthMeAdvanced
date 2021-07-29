@@ -1,0 +1,6 @@
+name: AuthMeAdvancedGUI
+description: This is a simple plugin that add an gui to AuthMe.
+main: fr.azgin.main.MainClass
+version: 1.0
+author: DrAzgin
+depend:  [AuthMe, AdvancedGUI]

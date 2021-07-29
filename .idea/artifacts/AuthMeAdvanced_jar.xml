@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="AuthMeAdvanced:jar">
+    <output-path>$PROJECT_DIR$/../mc_server/plugins</output-path>
+    <root id="archive" name="AuthMeAdvanced.jar">
+      <element id="module-output" name="AuthMeAdvanced" />
+    </root>
+  </artifact>
+</component>
