@@ -3,12 +3,8 @@ package fr.azgin.main;
 import me.leoko.advancedgui.utils.Interaction;
 import me.leoko.advancedgui.utils.Layout;
 import me.leoko.advancedgui.utils.LayoutExtension;
-import me.leoko.advancedgui.utils.actions.Action;
-import me.leoko.advancedgui.utils.components.Component;
 import me.leoko.advancedgui.utils.components.TextComponent;
-import me.leoko.advancedgui.utils.components.TextInputComponent;
 import me.leoko.advancedgui.utils.events.LayoutLoadEvent;
-import org.bukkit.entity.Player;
 import org.bukkit.metadata.MetadataValue;
 
 import java.util.List;
@@ -18,6 +14,7 @@ public class GuiExtension implements LayoutExtension {
     Layout layout = null;
 
     StringBuilder final_password = new StringBuilder();
+    StringBuilder dollard_password = new StringBuilder();
 
     @Override
     public void onLayoutLoad(LayoutLoadEvent event) {
@@ -32,10 +29,12 @@ public class GuiExtension implements LayoutExtension {
 
     public void addToInput(String number, Interaction context){
         Layout _layout = context.getLayout();
+        dollard_password.append("*");
 
         TextComponent comp = (TextComponent) _layout.getComponentTree().locate(GuiData.input_text);
-        comp.setText(final_password.append(number).toString());
+        comp.setText(dollard_password.toString());
 
+        final_password.append(number);
     }
 
     public void resetInput(Interaction context){
@@ -44,6 +43,7 @@ public class GuiExtension implements LayoutExtension {
 
         TextComponent comp = (TextComponent) _layout.getComponentTree().locate(GuiData.input_text);
         this.final_password = new StringBuilder();
+        this.dollard_password = new StringBuilder();
         comp.setText("");
 
     }
@@ -80,7 +80,6 @@ public class GuiExtension implements LayoutExtension {
              */
 
             if(player.hasMetadata("authmegui_registered")){
-
                 List<MetadataValue> lists = player.getMetadata("authmegui_registered");
                 MetadataValue list_value = lists.get(lists.size() - 1);
 
@@ -90,6 +89,8 @@ public class GuiExtension implements LayoutExtension {
                     player.performCommand("register " + final_password.toString() + " " + final_password);
                 }
 
+                this.final_password = new StringBuilder();
+                this.dollard_password = new StringBuilder();
             }
         });
 

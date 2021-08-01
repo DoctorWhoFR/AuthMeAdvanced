@@ -1,8 +1,12 @@
 package fr.azgin.main;
 
 import fr.xephi.authme.api.v3.AuthMeApi;
+import fr.xephi.authme.api.v3.AuthMePlayer;
+import fr.xephi.authme.data.auth.PlayerAuth;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+
+import java.util.Optional;
 
 // This should be the only class that uses AuthMe's AuthMeApi
 public class AuthMeHook {
@@ -46,5 +50,11 @@ public class AuthMeHook {
             return authMeApi.isRegistered(name);
         }
         return false;
+    }
+
+    public AuthMePlayer userInfo(String name){
+        Optional<AuthMePlayer> _auth =  authMeApi.getPlayerInfo(name);
+
+        return _auth.orElse(null);
     }
 }

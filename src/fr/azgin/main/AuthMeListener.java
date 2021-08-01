@@ -1,5 +1,6 @@
 package fr.azgin.main;
 
+import fr.xephi.authme.api.v3.AuthMePlayer;
 import fr.xephi.authme.events.FailedLoginEvent;
 import fr.xephi.authme.events.LoginEvent;
 import me.leoko.advancedgui.manager.GuiItemManager;
@@ -29,6 +30,8 @@ public class AuthMeListener implements Listener {
 
         AuthMeHook hook = MainClass.authMeHook;
         Player p = event.getPlayer();
+        AuthMePlayer authMePlayer = hook.userInfo(p.getName());
+
         PersistentDataContainer container = p.getPersistentDataContainer();
         p.setMetadata("authmegui_counter", new FixedMetadataValue(main, counter));
 
