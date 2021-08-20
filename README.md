@@ -10,8 +10,6 @@ He was made for the AdvancedGui community by myself.
 - Register/Login on the same Ui
 - Easy to use no need tutorial for player
 - Work with Left-Click and Right-Click (thx AdvancedGui)
-
-## Maybe:
 - Masked input like "*" ?
  
 ## You need:
